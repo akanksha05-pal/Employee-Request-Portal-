@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+
+        <!--        kanban view-->
+        <record id="kanban_request_category_view" model="ir.ui.view">
+            <field name="name">Request Category</field>
+            <field name="model">request.category</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click" style="border:5px #71639e solid;">
+                                <div class="oe_kanban_image">
+                                    <field name="image" class="o_kanban_image" preview_image="image" widget="image"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <h4 class="o_kanban_record_title">
+                                        <field name="name"/>
+                                    </h4>
+                                </div>
+                                <br></br>
+                                <div>
+<!--                                    <button name="%(employee_request_portal.action_employee_request)d" type="action"-->
+<!--                                            string="New Request"-->
+<!--                                            class="btn-secondary">New Request-->
+<!--                                    </button>-->
+                                    <button name="new_request_func" string="New Request" type="object" class="btn-secondary"  >New Request</button>
+
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="form_request_category_view" model="ir.ui.view">
+            <field name="name">Request Category</field>
+            <field name="model">request.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="name" placeholder="Address change"/>
+                        <field name="image"  widget="image"/>
+
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+        <!--        &lt;!&ndash;        form view&ndash;&gt;-->
+        <!--        <record id="form_request_category_view" model="ir.ui.view">-->
+        <!--            <field name="name">Request Category</field>-->
+        <!--            <field name="model">request.category</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <form>-->
+        <!--                    <header>-->
+        <!--                        <button name="confirm_details" type="object" string="Submit" class="btn-secondary">Submit-->
+        <!--                        </button>-->
+
+        <!--                    </header>-->
+
+        <!--                    <sheet>-->
+        <!--                        <label for="name" string="Request Type"/>-->
+        <!--                        <h1>-->
+
+        <!--                            <field name="name" placeholder="Address change"/>-->
+        <!--                            <field name="image" widget="image" class="oe_avatar"/>-->
+        <!--                        </h1>-->
+        <!--                        <group>-->
+
+        <!--                            <label for="date_start" string="Period"/>-->
+        <!--                            <div>-->
+        <!--                                <div>-->
+        <!--                                    <span>From:</span>-->
+        <!--                                    <field name="date_start" class="oe_inline"/>-->
+        <!--                                </div>-->
+        <!--                                <div>-->
+        <!--                                    <span>to:</span>-->
+        <!--                                    <field name="date_end" class="oe_inline ms-4"/>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                            <field name="location" placeholder="Eg:Mumbai"/>-->
+        <!--                            <field name="contact"/>-->
+        <!--                            <field name="amount"/>-->
+
+        <!--                        </group>-->
+        <!--                    </sheet>-->
+        <!--                </form>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <!--        act_window-->
+        <record id="action_request_category" model="ir.actions.act_window">
+            <field name="name">Request Category</field>
+            <field name="res_model">request.category</field>
+            <field name="view_mode">kanban,form</field>
+
+        </record>
+
+
+        <menuitem id="request_category_main_parent" name="Employee Request Portal" sequence="1"/>
+        <menuitem id="sub_request_category" name="Request Category" parent="request_category_main_parent"
+                  action="action_request_category"
+                  sequence="1"/>
+    </data>
+</odoo>
