@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+<!--        tree view/list view-->
+        <record id ="tree_employee_request_view" model="ir.ui.view">
+            <field name="name">Employee Request</field>
+            <field name="model">employee.request</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Employee Name"/>
+                    <field name="location" />
+                    <field name="contact"/>
+                    <field name="amount"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+<!--        form view-->
+        <record id="form_employee_request_view" model="ir.ui.view">
+            <field name="name">Employee Request</field>
+            <field name="model">employee.request</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="submit_details" type="object" string="Submit" class="btn-secondary">Submit</button>
+
+                    </header>
+
+                    <sheet>
+<!--                        <label for="name" string="Request Type"/>-->
+                        <h1>
+<!--                            <field name="request_category_id"/>-->
+
+<!--                            <field name="name" placeholder="Address change"/>-->
+                            <field name="image" widget="image" class="oe_avatar"/>
+                        </h1>
+                        <group>
+                            <field name="name" string="Employee Name"/>
+                            <label for="date_start" string="Period"/>
+                            <div>
+                                <div>
+                                    <span>From:</span>
+                                    <field name="date_start" class="oe_inline"/>
+                                </div>
+                                <div>
+                                    <span>to:</span>
+                                    <field name="date_end" class="oe_inline ms-4"/>
+                                </div>
+                            </div>
+                            <field name="location" placeholder="Eg:Mumbai"/>
+                            <field name="contact"/>
+                            <field name="amount"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        act_window-->
+        <record id="action_employee_request" model="ir.actions.act_window">
+            <field name="name">Employee Request</field>
+            <field name="res_model">employee.request</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+<!--        <menuitem id="request_category_main_parent" name="Employee Request Portal" sequence="1"/>-->
+        <menuitem id="sub_employee_request" name="Employee Request" parent="request_category_main_parent"
+                  action="action_employee_request"
+                  sequence="1"/>
+    </data>
+</odoo>
